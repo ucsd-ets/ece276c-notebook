@@ -19,10 +19,10 @@ USER root
 # 3) install packages
 #RUN pip install networkx rpy2==3.1.0 python-igraph powerlaw numpy scipy python-louvain
 
-RUN apt install -y curl git \
-  libgl1-mesa-dev libgl1-mesa-glx libglew-dev \
-  libosmesa6-dev software-properties-common net-tools unzip vim \
-  virtualenv wget xpra xserver-xorg-dev libglfw3-dev patchelf
+RUN apt-get update && \
+  apt-get install -y libgl1-mesa-dev libgl1-mesa-glx libglew-dev \
+    libosmesa6-dev software-properties-common net-tools \
+    virtualenv xpra xserver-xorg-dev libglfw3-dev patchelf
 
 # 4) change back to notebook user
 USER $NB_UID
