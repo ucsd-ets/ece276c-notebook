@@ -1,4 +1,3 @@
-# How to use
+# ECE 276C - Reinforcement Learning in Robotics
 
-1. Fork repository
-2. Edit Dockerfile
+Notebook based on [ucsdets/scipy-ml-notebook](https://hub.docker.com/repository/docker/ucsdets/scipy-ml-notebook) with additional dependencies for ECE 276C.
