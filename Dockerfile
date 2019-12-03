@@ -17,12 +17,11 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 USER root
 
 # 3) install packages
-#RUN pip install networkx rpy2==3.1.0 python-igraph powerlaw numpy scipy python-louvain
-
 RUN apt-get update && \
   apt-get install -y libgl1-mesa-dev libgl1-mesa-glx libglew-dev \
     libosmesa6-dev software-properties-common net-tools \
-    virtualenv xpra xserver-xorg-dev libglfw3-dev patchelf
+    virtualenv xpra xserver-xorg-dev libglfw3-dev patchelf \
+    libplib-dev libopenal-dev libalut-dev
 
 # 4) change back to notebook user
 USER $NB_UID
