@@ -2,20 +2,21 @@ FROM ucsdets/datahub-base-notebook:2020.2.9
 
 USER root
 
-RUN apt-get install -y \
-    libglu1-mesa-dev \
-    libgl1-mesa-dev \
-    libosmesa6-dev \
-    xvfb \
-    ffmpeg \
-    patchelf \
-    libglfw3 \
-    libglfw3-dev \
-    cmake \
-    zlib1g \
-    zlib1g-dev \
-    swig \
-    libgl1-mesa-glx
+RUN apt-get update --fix-missing && \
+    apt-get install -y \
+        libglu1-mesa-dev \
+        libgl1-mesa-dev \
+        libosmesa6-dev \
+        xvfb \
+        ffmpeg \
+        patchelf \
+        libglfw3 \
+        libglfw3-dev \
+        cmake \
+        zlib1g \
+        zlib1g-dev \
+        swig \
+        libgl1-mesa-glx
 
 COPY gym.yaml /usr/share/datahub/kernels/gym.yml
 
