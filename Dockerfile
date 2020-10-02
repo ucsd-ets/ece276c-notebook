@@ -1,4 +1,4 @@
-FROM ucsdets/scipy-ml-notebook:2020.2.9
+FROM ucsdets/datahub-base-notebook:2020.2.9
 
 USER root
 
