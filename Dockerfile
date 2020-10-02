@@ -16,7 +16,30 @@ RUN apt-get update --fix-missing && \
         zlib1g \
         zlib1g-dev \
         swig \
-        libgl1-mesa-glx
+        libgl1-mesa-glx \
+        apt-utils \
+        build-essential \
+        software-properties-common \
+        g++  \
+        git  \
+        curl  \
+        cmake \
+        cython3  \
+        unzip \
+        xvfb \
+        libopenblas-base  \
+        xorg-dev \
+        dpkg \
+        xvfb \
+        xserver-xephyr \
+        gnupg \
+        pbuilder \
+        ubuntu-dev-tools \
+        apt-file \
+        linux-headers-$(uname -r) \
+        keyboard-configuration \
+     && apt-get clean \
+     && rm -rf /var/lib/apt/lists/*
 
 COPY gym.yaml /usr/share/datahub/kernels/gym.yml
 
