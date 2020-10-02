@@ -36,7 +36,6 @@ RUN apt-get update --fix-missing && \
         pbuilder \
         ubuntu-dev-tools \
         apt-file \
-        linux-headers-$(uname -r) \
         keyboard-configuration \
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/*
