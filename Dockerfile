@@ -47,6 +47,13 @@ RUN conda env create --file /usr/share/datahub/kernels/gym.yml && \
 
 ENV DISPLAY=':99.0'
 
+RUN git clone https://github.com/Microsoft/vcpkg.git && \
+    cd vcpkg && \
+    ./bootstrap-vcpkg.sh && \
+    ./vcpkg integrate install && \
+    ./vcpkg install bullet3 && \
+    mv ./vcpkg /usr/bin
+
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
