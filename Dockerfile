@@ -37,13 +37,19 @@ RUN apt-get update --fix-missing && \
         ubuntu-dev-tools \
         apt-file \
         keyboard-configuration \
+        zip \
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/*
 
 COPY gym.yaml /usr/share/datahub/kernels/gym.yml
 
-RUN conda env create --file /usr/share/datahub/kernels/gym.yml && \
-    conda run -n gym /bin/bash -c "pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 pytorch-ignite -f https://download.pytorch.org/whl/torch_stable.html; ipython kernel install --name=gym"
+RUN conda env create --file /usr/share/datahub/kernels/gym.yml
+
+# install all dependencies into gym environment that we can't install using gym.yaml
+RUN conda run -n gym /bin/bash -c "pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 pytorch-ignite -f https://download.pytorch.org/whl/torch_stable.html; \
+                                   git clone https://github.com/benelot/pybullet-gym.git; \
+                                   cd pybullet-gym; pip install -e .; \
+                                   ipython kernel install --name=gym"
 
 ENV DISPLAY=':99.0'
 
