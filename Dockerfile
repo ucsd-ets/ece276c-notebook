@@ -61,6 +61,6 @@ RUN git clone https://github.com/Microsoft/vcpkg.git && \
     mv ./vcpkg /usr/bin
 
 COPY run_jupyter.sh /
-RUN chmod +x /run_jupyter.sh
+RUN chmod +x /run_jupyter.sh && \
+    chmod -R 777 /home/jovyan
 
-USER $NB_USER
