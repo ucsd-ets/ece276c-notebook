@@ -51,6 +51,10 @@ RUN conda run -n gym /bin/bash -c "pip install torch==1.5.0+cu101 torchvision==0
                                    cd pybullet-gym; pip install -e .; \
                                    ipython kernel install --name=gym"
 
+# install modified environment
+RUN conda run -n gym /bin/bash -c "git clone https://github.com/ucsdarclab/pybullet-gym-env.git ;\
+								   pip install -e pybullet-gym-evn/."
+								   
 ENV DISPLAY=':99.0'
 
 RUN git clone https://github.com/Microsoft/vcpkg.git && \
