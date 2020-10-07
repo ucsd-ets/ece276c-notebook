@@ -50,7 +50,7 @@ RUN conda run -n gym /bin/bash -c "pip install torch==1.5.0+cu101 torchvision==0
                                    git clone https://github.com/benelot/pybullet-gym.git; \
                                    cd pybullet-gym; pip install -e .; \
                                    ipython kernel install --name=gym"
-
+								   
 ENV DISPLAY=':99.0'
 
 RUN git clone https://github.com/Microsoft/vcpkg.git && \
@@ -59,6 +59,10 @@ RUN git clone https://github.com/Microsoft/vcpkg.git && \
     ./vcpkg integrate install && \
     ./vcpkg install bullet3 && \
     mv ./vcpkg /usr/bin
+
+# install modified environment
+RUN conda run -n gym /bin/bash -c "git clone https://github.com/ucsdarclab/pybullet-gym-env.git ;\
+								   pip install -e pybullet-gym-env/."
 
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh && \
